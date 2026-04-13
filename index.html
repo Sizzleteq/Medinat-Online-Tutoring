@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miss Medinat – Professional Online Tutoring</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600;1,700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:       #D4AF37;
+  --gold-lt:    #F0D060;
+  --gold-dk:    #8B6A00;
+  --navy:       #071528;
+  --navy-2:     #0C2040;
+  --navy-3:     #0E2A52;
+  --teal:       #1ABC9C;
+  --blue:       #2980B9;
+  --green:      #27AE60;
+  --wa:         #25D366;
+  --wa-dk:      #128C7E;
+  --white:      #FFFFFF;
+  --off:        rgba(255,255,255,.72);
+  --muted:      rgba(255,255,255,.38);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #050e1a;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px 16px;
+}
+
+/* ══════════════════════════
+   FLYER SHELL
+══════════════════════════ */
+.flyer {
+  width: 640px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,.18),
+    0 50px 120px rgba(0,0,0,.85),
+    0 0 80px rgba(212,175,55,.06);
+  border-radius: 4px;
+}
+
+/* ══ TOP ACCENT STRIPE ══ */
+.stripe-top {
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--gold-dk) 0%,
+    var(--gold) 25%,
+    var(--gold-lt) 50%,
+    var(--gold) 75%,
+    var(--gold-dk) 100%
+  );
+}
+
+/* ══ HEADER BAR ══ */
+.header-bar {
+  background: linear-gradient(90deg, #040e1c 0%, #0a1e38 50%, #040e1c 100%);
+  border-bottom: 1px solid rgba(212,175,55,.2);
+  padding: 11px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hb-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hb-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dk));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 3px 14px rgba(212,175,55,.4);
+  flex-shrink: 0;
+}
+.hb-text {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.hb-text em { color: var(--gold); font-style: normal; }
+
+.live-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212,175,55,.1);
+  border: 1px solid rgba(212,175,55,.28);
+  border-radius: 50px;
+  padding: 5px 14px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: blink 1.4s ease infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+/* ══════════════════════════
+   HERO
+══════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  overflow: hidden;
+  background: linear-gradient(145deg, #040e1c 0%, #071830 45%, #0c2448 100%);
+}
+
+/* subtle grid overlay */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(212,175,55,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,55,.035) 1px, transparent 1px);
+  background-size: 38px 38px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* glow blobs */
+.blob { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; }
+.bl1 { width:420px;height:420px; background:rgba(212,175,55,.07); top:-140px; right:-100px; }
+.bl2 { width:300px;height:300px; background:rgba(41,128,185,.08); bottom:-80px; left:-60px; }
+.bl3 { width:220px;height:220px; background:rgba(26,188,156,.05); top:40%; left:45%; }
+
+/* ── LEFT TEXT ── */
+.hero-left {
+  position: relative;
+  z-index: 3;
+  width: 52%;
+  padding: 36px 0 36px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.script-pro {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.6rem;
+  color: var(--gold);
+  letter-spacing: .02em;
+  line-height: 1;
+  margin-bottom: 2px;
+  animation: fadeUp .7s .1s ease both;
+}
+
+.h-online {
+  font-size: 2.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: .95;
+  letter-spacing: .02em;
+  animation: fadeUp .7s .15s ease both;
+}
+.h-tutoring {
+  font-size: 3.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: .92;
+  letter-spacing: .01em;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.subjects-pipe {
+  margin-top: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--off);
+  letter-spacing: .05em;
+  animation: fadeUp .7s .25s ease both;
+}
+.subjects-pipe span { color: rgba(212,175,55,.4); margin: 0 6px; }
+
+.tutor-block {
+  margin-top: 22px;
+  animation: fadeUp .7s .3s ease both;
+}
+.with-txt {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+.tutor-name {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--white);
+  line-height: 1;
+}
+.tutor-attrs {
+  margin-top: 7px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.tutor-attrs span { opacity: .35; margin: 0 5px; }
+
+.hero-blurb {
+  margin-top: 18px;
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: var(--off);
+  padding-left: 12px;
+  border-left: 2px solid rgba(212,175,55,.3);
+  max-width: 270px;
+  animation: fadeUp .7s .35s ease both;
+}
+
+/* ── RIGHT GRAPHIC ── */
+.hero-right {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 54%;
+  z-index: 2;
+}
+
+/* curved mask */
+.hero-right::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 130px;
+  background: linear-gradient(145deg, #040e1c 0%, #071830 50%, #0c2448 100%);
+  clip-path: ellipse(58% 100% at 0% 50%);
+  z-index: 4;
+}
+
+/* gold arc rings */
+.arc { position: absolute; border-radius: 50%; pointer-events: none; }
+.arc1 { width: 380px; height: 460px; border: 2px solid rgba(212,175,55,.25); top: -30px; left: 10px; z-index: 2; animation: pulse-ring 4s ease-in-out infinite; }
+.arc2 { width: 300px; height: 370px; border: 1px solid rgba(212,175,55,.12); top: 15px; left: 50px; z-index: 2; animation: pulse-ring 4s 1s ease-in-out infinite; }
+@keyframes pulse-ring { 0%,100%{opacity:.8} 50%{opacity:.4} }
+
+/* mission badge */
+.mission-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 108px; height: 108px;
+  background: linear-gradient(145deg, #07152a, #0e2748);
+  border: 2.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  z-index: 6;
+  box-shadow: 0 8px 36px rgba(0,0,0,.6), 0 0 28px rgba(212,175,55,.18), inset 0 1px 0 rgba(212,175,55,.12);
+}
+.mb-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 10.5px;
+  color: rgba(255,255,255,.88);
+  line-height: 1.55;
+  padding: 0 9px;
+}
+.mb-text strong { color: var(--gold); font-style: normal; display: block; font-size: 11px; }
+
+/* main graphic — teacher at desk visual */
+.teacher-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.teacher-scene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+
+/* glow halo behind teacher */
+.teacher-halo {
+  position: absolute;
+  width: 260px; height: 260px;
+  background: radial-gradient(ellipse, rgba(212,175,55,.1) 0%, transparent 68%);
+  border-radius: 50%;
+  top: -20px; left: 50%;
+  transform: translateX(-50%);
+}
+
+/* teacher emoji with glow */
+.teacher-emoji {
+  font-size: 100px;
+  filter: drop-shadow(0 0 24px rgba(212,175,55,.35)) drop-shadow(0 8px 20px rgba(0,0,0,.6));
+  animation: float-teacher 4s ease-in-out infinite;
+  position: relative; z-index: 2;
+  margin-bottom: -14px;
+}
+@keyframes float-teacher {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* laptop on desk */
+.laptop-wrap {
+  position: relative;
+  z-index: 3;
+}
+.laptop-screen {
+  width: 150px;
+  height: 90px;
+  background: linear-gradient(135deg, #0a2040, #153a6a);
+  border: 2px solid var(--gold);
+  border-radius: 10px 10px 3px 3px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(212,175,55,.22), inset 0 0 30px rgba(0,0,0,.4);
+  margin: 0 auto;
+}
+/* scanlines */
+.laptop-screen::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.08) 3px, rgba(0,0,0,.08) 4px);
+  pointer-events: none;
+}
+.screen-inner { text-align: center; position: relative; z-index: 1; }
+.sc-tag { font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); opacity: .75; }
+.sc-icon { font-size: 24px; margin: 4px 0; display: block; }
+.sc-name { font-size: 10px; font-weight: 700; color: var(--white); letter-spacing: .06em; }
+/* blinking cursor */
+.cursor {
+  display: inline-block;
+  width: 7px; height: 11px;
+  background: var(--gold);
+  border-radius: 1px;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink .9s step-end infinite;
+}
+
+.laptop-body {
+  width: 160px; height: 7px;
+  background: linear-gradient(180deg, #1a3a6a, #0c2040);
+  border-radius: 0 0 3px 3px;
+  border: 1.5px solid rgba(212,175,55,.3);
+  border-top: none;
+  margin: 0 auto;
+}
+.laptop-foot {
+  width: 48px; height: 5px;
+  background: #0c2040;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid rgba(212,175,55,.2);
+  border-top: none;
+  margin: 0 auto;
+}
+
+/* books beside laptop */
+.books-stack {
+  position: absolute;
+  right: -28px; bottom: 12px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.book { height: 11px; border-radius: 2px; border: 1px solid rgba(0,0,0,.2); }
+.bk1 { width: 54px; background: #c0392b; }
+.bk2 { width: 48px; background: var(--blue); }
+.bk3 { width: 58px; background: var(--green); }
+.bk4 { width: 42px; background: #8e44ad; }
+
+/* pencil */
+.pencil {
+  position: absolute;
+  left: -32px; bottom: 14px;
+  width: 8px; height: 70px;
+  background: linear-gradient(180deg, #f9ca24, #f0932b);
+  border-radius: 2px 2px 0 0;
+  transform: rotate(-15deg);
+}
+.pencil::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 8px; height: 6px;
+  background: #e17055;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* desk surface */
+.desk { width: 230px; height: 10px; background: linear-gradient(180deg, #2c4a70, #1a3050); border-top: 2px solid rgba(212,175,55,.35); border-radius: 2px; }
+
+/* floating subject bubbles */
+.bubbles { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  border: 1.5px solid;
+  backdrop-filter: blur(4px);
+}
+.bb1 { width:44px;height:44px; top:22px;  right:118px; background:rgba(41,128,185,.18);  border-color:rgba(41,128,185,.55);  animation:float 3.2s ease-in-out infinite; }
+.bb2 { width:36px;height:36px; top:78px;  right:100px; background:rgba(212,175,55,.15);  border-color:rgba(212,175,55,.5);   animation:float 3.2s .6s ease-in-out infinite; }
+.bb3 { width:40px;height:40px; top:50px;  right:168px; background:rgba(26,188,156,.15);  border-color:rgba(26,188,156,.5);   animation:float 3.2s 1.2s ease-in-out infinite; }
+.bb4 { width:34px;height:34px; top:116px; right:140px; background:rgba(39,174,96,.15);   border-color:rgba(39,174,96,.5);    animation:float 3.2s 1.8s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+
+/* ══════════════════════════
+   SUBJECTS BAND
+══════════════════════════ */
+.subj-band {
+  background: linear-gradient(90deg, #04101e 0%, #0a1e38 50%, #04101e 100%);
+  border-top: 1.5px solid rgba(212,175,55,.22);
+  border-bottom: 1.5px solid rgba(212,175,55,.12);
+  padding: 20px 30px;
+}
+
+.subj-label-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, var(--gold), #b8962c);
+  color: #07152a;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 14px rgba(212,175,55,.3);
+}
+
+.subj-row {
+  display: flex;
+  gap: 14px;
+}
+
+.subj-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.subj-circle {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  border: 2px solid;
+  position: relative;
+  transition: transform .25s;
+}
+.subj-circle:hover { transform: scale(1.08); }
+.subj-circle::after {
+  content: '';
+  position: absolute; inset: -5px;
+  border-radius: 50%;
+  border: 1px dashed;
+  opacity: .2;
+  animation: spin-ring 14s linear infinite;
+}
+@keyframes spin-ring { to { transform: rotate(360deg); } }
+
+.si-eng  { background:rgba(41,128,185,.18);  border-color:var(--blue);  }
+.si-eng::after  { border-color:var(--blue);  }
+.si-math { background:rgba(212,175,55,.18);  border-color:var(--gold);  }
+.si-math::after { border-color:var(--gold);  }
+.si-sci  { background:rgba(26,188,156,.18);  border-color:var(--teal);  }
+.si-sci::after  { border-color:var(--teal);  }
+.si-bio  { background:rgba(39,174,96,.18);   border-color:var(--green); }
+.si-bio::after  { border-color:var(--green); }
+
+.subj-name {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+/* ══════════════════════════
+   INFO CARDS
+══════════════════════════ */
+.info-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  border-top: 1px solid rgba(212,175,55,.08);
+}
+
+.info-card {
+  padding: 24px 26px;
+  background: #0b1e3c;
+  border-right: 1px solid rgba(212,175,55,.08);
+}
+.info-card:last-child {
+  border-right: none;
+  background: #091a34;
+}
+
+.ic-head {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ic-head::before { content:''; width:16px; height:2px; background:var(--gold); border-radius:2px; }
+
+.why-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.why-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12px; color: var(--off); line-height: 1.45;
+}
+.chk {
+  width: 20px; height: 20px;
+  background: rgba(212,175,55,.12);
+  border: 1px solid rgba(212,175,55,.35);
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 11px;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+.who-emoji { font-size: 34px; display:block; margin-bottom:10px; }
+.who-head  { font-size:13px; font-weight:700; color:var(--white); margin-bottom:8px; }
+.who-body  { font-size:11.5px; color:var(--off); line-height:1.75; }
+.who-body strong { color:var(--white); font-weight:600; }
+.level-tags { margin-top:12px; display:flex; flex-wrap:wrap; gap:6px; }
+.ltag {
+  background: rgba(212,175,55,.1);
+  border: 1px solid rgba(212,175,55,.24);
+  border-radius: 5px; padding:4px 10px;
+  font-size:10px; font-weight:600; color:var(--gold); letter-spacing:.06em;
+}
+
+/* ══════════════════════════
+   FEATURE STRIP
+══════════════════════════ */
+.feat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #08192f;
+  border-top: 1px solid rgba(212,175,55,.08);
+}
+
+.feat-item {
+  padding: 18px 16px;
+  border-right: 1px solid rgba(212,175,55,.07);
+  text-align: center;
+  transition: background .25s;
+}
+.feat-item:last-child { border-right: none; }
+.feat-item:hover { background: rgba(212,175,55,.04); }
+
+.fi-icon { font-size: 24px; display:block; margin-bottom:8px; }
+.fi-title { font-size:9px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
+.fi-desc { font-size:10.5px; color:var(--muted); line-height:1.55; }
+
+/* ══════════════════════════
+   CTA BOTTOM
+══════════════════════════ */
+.cta-bar {
+  background: linear-gradient(135deg, #040e1c 0%, #0a1e38 50%, #040e1c 100%);
+  border-top: 2px solid var(--gold);
+  padding: 22px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative gold orbs */
+.cta-bar::before {
+  content:''; position:absolute;
+  top:-60px; left:-40px;
+  width:180px; height:180px;
+  background: radial-gradient(circle, rgba(212,175,55,.07) 0%, transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+.cta-bar::after {
+  content:''; position:absolute;
+  bottom:-70px; right:240px;
+  width:160px; height:160px;
+  background: radial-gradient(circle, rgba(41,128,185,.08) 0%, transparent 70%);
+  border-radius:50%; pointer-events:none;
+}
+
+.cta-left { position:relative; z-index:1; }
+.cta-eyebrow { font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.cta-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: .05em;
+  line-height: 1;
+}
+.cta-hint { font-size:10px; color:var(--muted); margin-top:5px; }
+
+.wa-btn {
+  position: relative; z-index:1;
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, var(--wa) 0%, var(--wa-dk) 100%);
+  color: var(--white);
+  text-decoration: none;
+  padding: 15px 26px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(37,211,102,.35), 0 0 0 1px rgba(255,255,255,.07);
+  transition: transform .25s, box-shadow .25s;
+  white-space: nowrap;
+}
+.wa-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 44px rgba(37,211,102,.52);
+}
+.wa-icon { font-size:24px; }
+.wa-label { font-size:9px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; opacity:.8; display:block; }
+.wa-number { font-size:17px; font-weight:900; display:block; margin-top:2px; letter-spacing:.04em; }
+
+/* ══ FOOTER ══ */
+.footer {
+  background: #030c18;
+  padding: 11px 30px;
+  display: flex; align-items: center; justify-content:center;
+  gap: 16px;
+}
+.fw { font-size:9px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+.fd { width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.55; }
+
+/* ══ GOLD BOTTOM STRIPE ══ */
+.stripe-bot {
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold-dk), var(--gold), var(--gold-lt), var(--gold), var(--gold-dk));
+}
+
+/* ══════════════════════════
+   ANIMATIONS
+══════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media (max-width: 680px) {
+  body { padding: 16px 8px; }
+  .flyer { width: 100%; }
+  .hero { flex-direction: column; min-height: auto; }
+  .hero-left { width: 100%; padding: 28px 20px 20px; }
+  .hero-right { position: relative; width: 100%; height: 220px; }
+  .hero-right::before { display:none; }
+  .h-online { font-size: 2rem; }
+  .h-tutoring { font-size: 2.8rem; }
+  .tutor-name { font-size: 1.5rem; }
+  .info-row { grid-template-columns: 1fr; }
+  .info-card { border-right:none; border-bottom:1px solid rgba(212,175,55,.08); }
+  .feat-strip { grid-template-columns: 1fr; }
+  .feat-item { border-right:none; border-bottom:1px solid rgba(212,175,55,.07); }
+  .cta-bar { flex-direction:column; text-align:center; }
+  .footer { flex-wrap:wrap; }
+}
+</style>
+</head>
+<body>
+
+<div class="flyer">
+
+  <!-- TOP STRIPE -->
+  <div class="stripe-top"></div>
+
+  <!-- HEADER -->
+  <div class="header-bar">
+    <div class="hb-left">
+      <div class="hb-icon">🎓</div>
+      <div class="hb-text">Learn Today &nbsp;·&nbsp; <em>Lead Tomorrow</em></div>
+    </div>
+    <div class="live-pill">
+      <div class="live-dot"></div>
+      Enrolling Now
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="blob bl1"></div>
+    <div class="blob bl2"></div>
+    <div class="blob bl3"></div>
+
+    <!-- Left: Headline Text -->
+    <div class="hero-left">
+      <div class="script-pro">Professional</div>
+      <div class="h-online">ONLINE</div>
+      <div class="h-tutoring">TUTORING</div>
+      <div class="subjects-pipe">
+        English <span>|</span> Maths <span>|</span> Science <span>|</span> Biology
+      </div>
+
+      <div class="tutor-block">
+        <div class="with-txt">with</div>
+        <div class="tutor-name">Miss Medinat</div>
+        <div class="tutor-attrs">Experienced <span>•</span> Patient <span>•</span> Results-Driven</div>
+      </div>
+
+      <div class="hero-blurb">
+        Helping students build confidence, master key concepts, and achieve academic excellence — one lesson at a time.
+      </div>
+    </div>
+
+    <!-- Right: Graphic Scene -->
+    <div class="hero-right">
+      <div class="arc arc1"></div>
+      <div class="arc arc2"></div>
+
+      <!-- floating subject bubbles -->
+      <div class="bubbles">
+        <div class="bubble bb1">📖</div>
+        <div class="bubble bb2">📐</div>
+        <div class="bubble bb3">🔬</div>
+        <div class="bubble bb4">🧬</div>
+      </div>
+
+      <!-- Mission badge -->
+      <div class="mission-badge">
+        <div class="mb-text">
+          "Your<br>Success<br>is My<br><strong>Mission"</strong>
+        </div>
+      </div>
+
+      <!-- Teacher + desk scene -->
+      <div class="teacher-wrap">
+        <div class="teacher-scene">
+          <div class="teacher-halo"></div>
+          <div class="teacher-emoji">👩🏾‍💻</div>
+
+          <div class="laptop-wrap" style="position:relative;">
+            <div class="pencil"></div>
+            <div class="laptop-screen">
+              <div class="screen-inner">
+                <div class="sc-tag">Session in Progress</div>
+                <span class="sc-icon">✏️</span>
+                <div class="sc-name">Miss Medinat<span class="cursor"></span></div>
+              </div>
+            </div>
+            <div class="laptop-body"></div>
+            <div class="laptop-foot"></div>
+            <div class="books-stack">
+              <div class="book bk1"></div>
+              <div class="book bk2"></div>
+              <div class="book bk3"></div>
+              <div class="book bk4"></div>
+            </div>
+          </div>
+
+          <div class="desk"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBJECTS BAND -->
+  <div class="subj-band">
+    <div class="subj-label-pill">📚 Subjects I Tutor</div>
+    <div class="subj-row">
+      <div class="subj-item">
+        <div class="subj-circle si-eng">📖</div>
+        <div class="subj-name">English</div>
+      </div>
+      <div class="subj-item">
+        <div class="subj-circle si-math">📐</div>
+        <div class="subj-name">Maths</div>
+      </div>
+      <div class="subj-item">
+        <div class="subj-circle si-sci">🔬</div>
+        <div class="subj-name">Science</div>
+      </div>
+      <div class="subj-item">
+        <div class="subj-circle si-bio">🧬</div>
+        <div class="subj-name">Biology</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="info-row">
+    <div class="info-card">
+      <div class="ic-head">Why Choose Me?</div>
+      <ul class="why-list">
+        <li><div class="chk">✔</div> Clear &amp; engaging teaching style</li>
+        <li><div class="chk">✔</div> Personalized lessons tailored to your goals</li>
+        <li><div class="chk">✔</div> Flexible &amp; interactive online sessions</li>
+        <li><div class="chk">✔</div> Proven results &amp; continuous student growth</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <div class="ic-head">Who Can Join?</div>
+      <span class="who-emoji">👨‍👩‍👧‍👦</span>
+      <div class="who-head">Students of all levels</div>
+      <div class="who-body">
+        <strong>Primary | Secondary</strong>
+      </div>
+      <div class="level-tags">
+        <span class="ltag">IGCSE</span>
+        <span class="ltag">WAEC</span>
+        <span class="ltag">JAMB</span>
+        <span class="ltag">NECO</span>
+        <span class="ltag">College</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE STRIP -->
+  <div class="feat-strip">
+    <div class="feat-item">
+      <span class="fi-icon">💻</span>
+      <div class="fi-title">100% Online</div>
+      <div class="fi-desc">Learn from the comfort of your home, anywhere in the world.</div>
+    </div>
+    <div class="feat-item">
+      <span class="fi-icon">🗓️</span>
+      <div class="fi-title">Flexible Schedule</div>
+      <div class="fi-desc">Choose times that work for you.</div>
+    </div>
+    <div class="feat-item">
+      <span class="fi-icon">💬</span>
+      <div class="fi-title">Interactive Sessions</div>
+      <div class="fi-desc">Engaging, practical &amp; easy to understand.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-bar">
+    <div class="cta-left">
+      <div class="cta-eyebrow">📲 Contact Me on WhatsApp</div>
+      <div class="cta-number">07086234212</div>
+      <div class="cta-hint">Tap the button to start chatting instantly</div>
+    </div>
+    <a class="wa-btn" href="https://wa.me/2347086234212" target="_blank">
+      <span class="wa-icon">💬</span>
+      <div>
+        <span class="wa-label">Chat on WhatsApp</span>
+        <span class="wa-number">07086234212</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="fw">Better Understanding</span>
+    <div class="fd"></div>
+    <span class="fw">Stronger Results</span>
+    <div class="fd"></div>
+    <span class="fw">Brighter Future</span>
+  </div>
+
+  <!-- BOTTOM STRIPE -->
+  <div class="stripe-bot"></div>
+
+</div>
+
+</body>
+</html>
